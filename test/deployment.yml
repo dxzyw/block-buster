@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: flask-container
-          image: 185963713gzcheng283/flask-app:1.0.0
+          image: 185963713gzcheng283/flask-app:1.0.0  # {"$imagepolicy": "flux-system:flask-app"}
           ports:
             - containerPort: 8000
           env:
