@@ -1,52 +1,28 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  labels:
-    app: block-buster
-    version: 7.1.0
-    env: dev
-  name: block-buster-deployment
-  namespace: 1-demo
+  name: flask-app
+  namespace: flask-app
 spec:
-  replicas: 3
+  replicas: 2
   selector:
     matchLabels:
-      app: block-buster
-  strategy: {}
+      app: flask-app
   template:
     metadata:
       labels:
-        app: block-buster
-        api: downward
-        usage: global
-        env: dev
-        version: 7.1.0
+        app: flask-app
     spec:
       containers:
-        - name: app
-          image:  siddharth67/block-buster-dev:7.1.0
-          imagePullPolicy: Always
-          resources:
-            requests:
-              memory: "32Mi"
-              cpu: "125m"
-            limits:
-              memory: "64Mi"
-              cpu: "250m"
+        - name: flask-container
+          image: 185963713gzcheng283/flask-app:1.0.0
+          ports:
+            - containerPort: 8000
           env:
-            - name: MY_POD_NAME
-              valueFrom:
-                fieldRef:
-                  fieldPath: metadata.name
-            - name: MY_POD_NAMESPACE
-              valueFrom:
-                fieldRef:
-                  fieldPath: metadata.namespace
-            - name: MY_POD_IP
-              valueFrom:
-                fieldRef:
-                  fieldPath: status.podIP
-            - name: MY_NODE_NAME
-              valueFrom:
-                fieldRef:
-                  fieldPath: spec.nodeName
+            - name: FLASK_ENV
+              value: production
+          resources:
+            limits:
+              memory: "112Mi"
+              cpu: "50m"
+
