@@ -54,7 +54,7 @@ spec:
   interval: 1m40s
   sourceRef:
     kind: GitRepository
-    name: flask-app
+    name: flux-system
   update:
     path: ./test
     strategy: Setters 
