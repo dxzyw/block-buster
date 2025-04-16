@@ -56,5 +56,5 @@ spec:
     kind: GitRepository
     name: flux-system
   update:
-    path: ./flux-clusters/dev-cluster/test
+    path: ./test
     strategy: Setters 
