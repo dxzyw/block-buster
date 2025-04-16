@@ -21,3 +21,16 @@ metadata:
 spec:
   image: docker.io/185963713gzcheng283/flask-app
   interval: 10s
+
+---
+apiVersion: image.toolkit.fluxcd.io/v1beta2
+kind: ImagePolicy
+metadata:
+  name: flask-app
+  namespace: flux-system
+spec:
+  imageRepositoryRef:
+    name: flask-app
+  policy:
+    semver:
+      range: 1.0.x
