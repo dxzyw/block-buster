@@ -2,12 +2,12 @@
 apiVersion: source.toolkit.fluxcd.io/v1
 kind: GitRepository
 metadata:
-  name: 8-demo-source-git-bb-app
+  name: flask-app
   namespace: flux-system
 spec:
   interval: 1m0s
   ref:
-    branch: 8-demo
+    branch: main
   secretRef:
-    name: 8-demo-git-bb-app-auth
-  url: ssh://git@github.com//bb-app-source.git
+    name: flask-app-auth
+  url: ssh://git@github.com//block-buster.git
